@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invoice Preview</title>
+  <style>
+    body { margin: 0; background: #eef2f7; font-family: Arial, sans-serif; }
+    main { display: grid; gap: 16px; justify-content: center; padding: 16px; }
+    img { width: min(100%, 794px); height: auto; box-shadow: 0 2px 8px rgb(0 0 0 / 18%); background: white; }
+  </style>
+</head>
+<body>
+<main id="pages"></main>
+<script>
+  // This would typically be generated from manifest.json.
+  const pageImages = [
+    'invoice-page-1.png',
+    'invoice-page-2.png'
+  ];
+
+  const container = document.getElementById('pages');
+  pageImages.forEach((src, index) => {
+    const image = document.createElement('img');
+    image.src = src;
+    image.alt = `Invoice page ${index + 1}`;
+    image.loading = 'lazy';
+    container.appendChild(image);
+  });
+</script>
+</body>
+</html>
