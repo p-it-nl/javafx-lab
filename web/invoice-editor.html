@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invoice Editor</title>
+  <link rel="stylesheet" href="invoice-print.css" />
+</head>
+<body>
+<div id="editor-root">
+  <div class="sheet">
+    <header class="invoice-header">
+      <h1>Invoice INV-001</h1>
+      <p>Acme Labs</p>
+    </header>
+    <table>
+      <thead>
+      <tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>Design work</td><td>10</td><td>$50</td><td>$500</td></tr>
+      <tr><td>Development</td><td>20</td><td>$80</td><td>$1,600</td></tr>
+      </tbody>
+    </table>
+    <section class="totals no-split">
+      <p>Subtotal: $2,100</p>
+      <p>Tax: $210</p>
+      <p><strong>Grand Total: $2,310</strong></p>
+    </section>
+  </div>
+
+  <div class="sheet page-break-before">
+    <h2>Terms</h2>
+    <p>Payment due within 15 days. Thank you for your business.</p>
+    <div class="signature no-split">
+      <p>Approved by:</p>
+      <div class="line"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.getExportHtml = () => {
+    const cloned = document.documentElement.cloneNode(true);
+    const scripts = cloned.querySelectorAll('script');
+    scripts.forEach(script => script.remove());
+    return '<!doctype html>\n' + cloned.outerHTML;
+  };
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+:root {
+  --paper-width: 210mm;
+  --paper-height: 297mm;
+  --page-margin: 12mm;
+}
+
+body {
+  margin: 0;
+  background: #f0f2f5;
+  font: 14px/1.5 Arial, sans-serif;
+}
+
+#editor-root {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+}
+
+.sheet {
+  width: var(--paper-width);
+  height: var(--paper-height);
+  box-sizing: border-box;
+  background: white;
+  padding: var(--page-margin);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 18%);
+}
+
+.page-break-before {
+  break-before: page;
+  page-break-before: always;
+}
+
+.no-split,
+tr,
+thead {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  display: table-header-group;
+}
+
+th,
+td {
+  border: 1px solid #d8d8d8;
+  padding: 6px;
+}
+
+.signature .line {
+  margin-top: 20px;
+  border-bottom: 1px solid #333;
+}
+
+@page {
+  size: A4;
+  margin: var(--page-margin);
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  #editor-root {
+    display: block;
+    padding: 0;
+  }
+
+  .sheet {
+    margin: 0;
+    box-shadow: none;
+  }
+}
